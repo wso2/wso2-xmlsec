@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~ Copyright (c) 2022, WSO2 LLC. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ WSO2 LLC. licenses this file to you under the Apache License,
+ ~ Version 2.0 (the "License"); you may not use this file except
+ ~ in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing,
+ ~ software distributed under the License is distributed on an
+ ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~ KIND, either express or implied.  See the License for the
+ ~ specific language governing permissions and limitations
+ ~ under the License.
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wso2.santuario</groupId>
+    <artifactId>xmlsec-project</artifactId>
+    <packaging>pom</packaging>
+    <name>Apache XML Security for Java</name>
+    <version>1.5.6-wso2v1-SNAPSHOT</version>
+    <description>
+        Apache XML Security for Java supports XML-Signature Syntax and Processing,
+        W3C Recommendation 12 February 2002, and XML Encryption Syntax and
+        Processing, W3C Recommendation 10 December 2002. As of version 1.4,
+        the library supports the standard Java API JSR-105: XML Digital Signature APIs.
+    </description>
+    <url>http://santuario.apache.org/</url>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://issues.apache.org/jira/browse/SANTUARIO</url>
+    </issueManagement>
+    <mailingLists>
+        <mailingList>
+            <name>Apache Santuario Developer List</name>
+            <subscribe>dev-subscribe@santuario.apache.org</subscribe>
+            <unsubscribe>
+                dev-unsubscribe@santuario.apache.org
+            </unsubscribe>
+            <post>dev@santuario.apache.org</post>
+            <archive>
+                http://news.gmane.org/gmane.text.xml.security.devel
+            </archive>
+        </mailingList>
+    </mailingLists>
+    <modules>
+        <module>xmlsec</module>
+        <module>orbit</module>
+    </modules>
+    <inceptionYear>2000</inceptionYear>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/wso2/wso2-xmlsec.git</connection>
+        <developerConnection>scm:git:https://github.com/wso2/wso2-xmlsec.git</developerConnection>
+        <url>https://github.com/wso2/wso2-xmlsec.git</url>
+        <tag>HEAD</tag>
+    </scm>
+    <organization>
+        <name>The Apache Software Foundation</name>
+        <url>http://www.apache.org/</url>
+    </organization>
+
+    <parent>
+        <groupId>org.wso2</groupId>
+        <artifactId>wso2</artifactId>
+        <version>1.1</version>
+    </parent>
+
+    <repositories>
+        <!-- WSO2 released artifact repository -->
+        <repository>
+            <id>wso2.releases</id>
+            <name>WSO2 Releases Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+
+        <!-- WSO2 Snapshot artifact repository -->
+        <repository>
+            <id>wso2.snapshots</id>
+            <name>WSO2 Snapshot Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>wso2-nexus</id>
+            <name>WSO2 internal Repository</name>
+            <url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>1.0-alpha-5</version>
+            </extension>
+        </extensions>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons.logging.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>xalan</groupId>
+                <artifactId>xalan</artifactId>
+                <version>${xalan.version}</version>
+                <scope>provided</scope>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>${xerces.version}</version>
+                <scope>provided</scope>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>xml-apis</groupId>
+                <artifactId>xml-apis</artifactId>
+                <version>${xml.apis.version}</version>
+                <scope>provided</scope>
+                <optional>true</optional>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>withtest</id>
+            <properties>
+                <maven.test.skip>false</maven.test.skip>
+            </properties>
+        </profile>
+    </profiles>
+
+    <properties>
+        <xml.apis.version>1.3.04</xml.apis.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
+        <xalan.version>2.7.1</xalan.version>
+        <xerces.version>2.9.1</xerces.version>
+        <junit.version>4.8.2</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <bcprov.version>1.47</bcprov.version>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
+</project>
