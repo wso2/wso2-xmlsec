@@ -52,7 +52,11 @@ public class SignatureValidator {
         return validate(fn, ks, null);
     }
 
-    public DOMValidateContext getValidateContext(String fn, KeySelector ks)
+    public DOMValidateContext getValidateContext(String fn, KeySelector ks) throws Exception {
+        return getValidateContext(fn, ks, true);
+    }
+
+    public DOMValidateContext getValidateContext(String fn, KeySelector ks, boolean secureValidation)
         throws Exception {
         Document doc = XMLUtils.createDocumentBuilder(false, false).parse(new File(dir, fn));
         Element sigElement = getSignatureElement(doc);
@@ -61,13 +65,18 @@ public class SignatureValidator {
         }
         DOMValidateContext vc = new DOMValidateContext(ks, sigElement);
         vc.setBaseURI(dir.toURI().toString());
+        vc.setProperty("org.apache.jcp.xml.dsig.secureValidation", secureValidation);
         return vc;
     }
 
     public boolean validate(String fn, KeySelector ks, URIDereferencer ud)
         throws Exception {
+        return validate(fn, ks, ud, true);
+    }
 
-        DOMValidateContext vc = getValidateContext(fn, ks);
+    public boolean validate(String fn, KeySelector ks, URIDereferencer ud, boolean secureValidation)
+            throws Exception {
+        DOMValidateContext vc = getValidateContext(fn, ks, secureValidation);
         if (ud != null) {
             vc.setURIDereferencer(ud);
         }

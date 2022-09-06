@@ -21,6 +21,9 @@
  */
 package javax.xml.crypto.test.dsig;
 
+import org.apache.xml.security.utils.resolver.ResourceResolver;
+import org.apache.xml.security.utils.resolver.implementations.ResolverLocalFilesystem;
+
 import java.io.File;
 import java.security.Security;
 

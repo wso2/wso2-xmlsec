@@ -54,7 +54,7 @@ public class XMLCipherInput {
     /** MODES */
     private int mode;
     
-    private boolean secureValidation;
+    private boolean secureValidation = true;
 
     /**
      * Constructor for processing encrypted octets

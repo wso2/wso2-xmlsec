@@ -85,7 +85,7 @@ public class XMLSignatureInput {
      * A cached bytes
      */
     private byte[] bytes = null;
-    private boolean secureValidation;
+    private boolean secureValidation = true;
 
     /**
      * Some Transforms may require explicit MIME type, charset (IANA registered
@@ -526,7 +526,7 @@ public class XMLSignatureInput {
                 convertToNodes();
             } catch (Exception e) {
                 throw new XMLSecurityRuntimeException(
-                    "signature.XMLSignatureInput.nodesetReference", e
+                    "signature.XMLSignatureInput.nodesetReference"
                 );
             }
         }

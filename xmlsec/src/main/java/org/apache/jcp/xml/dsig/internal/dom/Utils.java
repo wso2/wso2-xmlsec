@@ -106,14 +106,13 @@ public final class Utils {
     }
 
     static boolean secureValidation(XMLCryptoContext xc) {
-        if (xc == null) {
-            return false;
+        boolean secureValidation = true;
+        if (xc != null) {
+            Boolean value = (Boolean)xc.getProperty("org.apache.jcp.xml.dsig.secureValidation");
+            if (value != null) {
+                secureValidation = value;
+            }
         }
-        return getBoolean(xc, "org.apache.jcp.xml.dsig.secureValidation");
-    }
-
-    private static boolean getBoolean(XMLCryptoContext xc, String name) {
-        Boolean value = (Boolean)xc.getProperty(name);
-        return (value != null && value.booleanValue());
+        return secureValidation;
     }
 }

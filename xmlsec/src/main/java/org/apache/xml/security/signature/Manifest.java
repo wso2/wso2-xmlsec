@@ -73,7 +73,7 @@ public class Manifest extends SignatureElementProxy {
     /** Field perManifestResolvers */
     private List<ResourceResolver> perManifestResolvers = null;
     
-    private boolean secureValidation;
+    private boolean secureValidation = true;
 
     /**
      * Constructs {@link Manifest}

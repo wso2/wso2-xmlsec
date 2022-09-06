@@ -246,7 +246,7 @@ public class XMLCipher {
     
     private SecureRandom random;
     
-    private boolean secureValidation;
+    private boolean secureValidation = true;
     
     private String digestAlg;
     
