@@ -79,7 +79,7 @@ public class IaikCoreFeaturesTest extends org.junit.Assert {
 
         boolean coreValidity = validator.validate
             (file, new KeySelectors.KeyValueKeySelector(),
-                    new OfflineDereferencer());
+                    new OfflineDereferencer(), false);
         assertTrue("Signature failed core validation", coreValidity);
     }
     

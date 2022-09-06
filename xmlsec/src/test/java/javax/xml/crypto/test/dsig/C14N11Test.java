@@ -167,7 +167,7 @@ public class C14N11Test extends org.junit.Assert {
         for (int i = 0; i < vendors.length; i++) {
             String file = test + "-" + vendors[i] + ".xml";
             // System.out.println("Validating " + file);
-            boolean coreValidity = validator.validate(file, sks);
+            boolean coreValidity = validator.validate(file, sks, null, false);
             assertTrue(file + " failed core validation", coreValidity);
         }
     }
