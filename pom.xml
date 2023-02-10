@@ -22,7 +22,7 @@
     <artifactId>xmlsec-project</artifactId>
     <packaging>pom</packaging>
     <name>Apache XML Security for Java</name>
-    <version>1.5.6-wso2v2-SNAPSHOT</version>
+    <version>1.5.6-wso2v2</version>
     <description>
         Apache XML Security for Java supports XML-Signature Syntax and Processing,
         W3C Recommendation 12 February 2002, and XML Encryption Syntax and
@@ -63,7 +63,7 @@
         <connection>scm:git:https://github.com/wso2/wso2-xmlsec.git</connection>
         <developerConnection>scm:git:https://github.com/wso2/wso2-xmlsec.git</developerConnection>
         <url>https://github.com/wso2/wso2-xmlsec.git</url>
-        <tag>HEAD</tag>
+        <tag>v1.5.6-wso2v2</tag>
     </scm>
     <organization>
         <name>The Apache Software Foundation</name>
